@@ -1,5 +1,12 @@
 package com.example.sqlite_curd_operations;
 
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+
 import androidx.annotation.NonNull;
 
 public class DataModel {
@@ -51,4 +58,6 @@ public class DataModel {
     }
 
 }
+
+
 

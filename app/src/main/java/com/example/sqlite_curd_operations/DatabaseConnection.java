@@ -71,7 +71,7 @@ public class DatabaseConnection  extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String queryStrings = " DELETE FROM " + CUSTOMER_TABLE + " WHERE " + ID + " = " + dataModel.getId();
         Cursor cursor;
-        cursor = db.rawQuery(queryStrings,null);
+        cursor = db.rawQuery(queryStrings, null);
 
         cursor.moveToNext();
     }
@@ -85,25 +85,25 @@ public class DatabaseConnection  extends SQLiteOpenHelper {
         values.put(ID, dataModel.getId());
         values.put(CUSTOMER_NAME, dataModel.getName());
         values.put(CUSTOMER_AGE, dataModel.getAge());
-        long update =    db.update(CUSTOMER_TABLE, values, ID + " = " +dataModel.getId(),null);
+        long update = db.update(CUSTOMER_TABLE, values, ID + " = " + dataModel.getId(), null);
 
         return update != -1;
     }
 
 
-    public List<DataModel> getEveryOne(){
+    public List<DataModel> getEveryOne() {
 
         List<DataModel> returnlist = new ArrayList<>();
         //get data from the database
         String queryString = "SELECT * FROM  CUSTOMER_TABLE";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor= db.rawQuery(queryString,null);
-        if(cursor.moveToFirst()){
-            do{
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            do {
                 int customerID = cursor.getInt(0);
                 String customerName = cursor.getString(1);
                 int customerAge = cursor.getInt(2);
-                DataModel newdataModel = new DataModel(customerID,customerName,customerAge);
+                DataModel newdataModel = new DataModel(customerID, customerName, customerAge);
                 returnlist.add(newdataModel);
             } while (cursor.moveToNext());
         }
@@ -115,5 +115,8 @@ public class DatabaseConnection  extends SQLiteOpenHelper {
         return returnlist;
 
     }
+
+//    sorted data
+
 
 }
